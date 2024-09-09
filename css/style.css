@@ -1,0 +1,115 @@
+/* Général */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Style de la barre de navigation */
+header {
+    background-color: #4A3AFF; /* Couleur violette */
+    position: fixed; /* Fixe la barre de navigation en haut */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 10;
+}
+
+nav {
+    display: flex-start;
+    justify-content: space-evenly; /* Espace réduit entre les liens */
+    padding: 2vh 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5vw; /* Taille réduite des liens */
+    font-weight: bold;
+    padding: 0 1.5vw; /* Espacement réduit entre les liens */
+}
+
+nav a:hover {
+    color: #FFF536; /* Changement de couleur au survol (jaune clair) */
+}
+
+nav a.active {
+    background-color: white;
+    color: #4A3AFF; /* Texte violet */
+    padding-bottom: 1vh; /* Un petit espace supplémentaire pour que le blanc descende */
+    border-bottom: 1vh solid white; /* Contour blanc qui descend jusqu'au contenu */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Style du contact */
+#contact {
+    position: absolute;
+    top: 1vh;
+    right: 2vw;
+}
+
+#contact a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.8vw;
+    padding: 0.5vh 1vw;
+    background-color: #FFD700; /* Jaune */
+    border-radius: 5px;
+}
+
+#contact a:hover {
+    background-color: #FFC400;
+}
+
+/* Contenu principal */
+#content {
+    margin-top: 12vh; /* Laisser un espace en haut pour la barre de navigation */
+    padding: 2vw;
+    display: flex;
+    justify-content: center; /* Centrer le contenu */
+}
+
+/* Articles */
+article.news {
+    width: 60vw; /* Les articles occupent environ 60% de la largeur de l'écran */
+    margin-bottom: 5vh;
+    border: 0.5vw solid black;
+    padding: 2vw;
+    background-color: white;
+}
+
+article.news h2 {
+    font-size: 3vw;
+    margin-bottom: 2vh;
+}
+
+/* Image des articles */
+.newsimg img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out; /* Pour l'effet de zoom */
+}
+
+.newsimg img:hover {
+    transform: scale(1.1); /* Zoom au survol */
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    nav a {
+        font-size: 2.5vw; /* Taille réduite sur les petits écrans */
+    }
+
+    article.news h2 {
+        font-size: 4vw;
+    }
+
+    #contact a {
+        font-size: 2.5vw;
+    }
+}
