@@ -5,9 +5,14 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: "Upbolter" ;
+    src: url('../fonts/UPBOLTERSNew-Regular.otf');
+}
+
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    font-family: Upbolter;
+    line-height: 1.8;
 }
 
 /* Style de la barre de navigation */
@@ -21,7 +26,7 @@ header {
 }
 
 nav {
-    display: flex-start;
+    display: inline;
     justify-content: space-evenly; /* Espace réduit entre les liens */
     padding: 2vh 0;
 }
@@ -70,7 +75,7 @@ nav a.active {
 #content {
     margin-top: 12vh; /* Laisser un espace en haut pour la barre de navigation */
     padding: 2vw;
-    display: flex;
+    /*display: flex;*/
     justify-content: center; /* Centrer le contenu */
 }
 
@@ -92,7 +97,7 @@ article.news h2 {
 .newsimg img {
     width: 100%;
     height: auto;
-    transition: transform 0.3s ease-in-out; /* Pour l'effet de zoom */
+    transition: transform 0.3s ease-in; /* Pour l'effet de zoom */
 }
 
 .newsimg img:hover {
