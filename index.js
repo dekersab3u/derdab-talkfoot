@@ -139,6 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function asideResults() {
         fetch(url, {
             method: 'GET',
+            mode: 'no-cors',
             headers: {
                 'X-Auth-Token': apiKey
             }
