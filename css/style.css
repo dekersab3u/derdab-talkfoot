@@ -13,11 +13,12 @@
 body {
     font-family: Upbolter;
     line-height: 1.8;
+    display:flex;
 }
 
 /* Style de la barre de navigation */
 header {
-    background-color: #4A3AFF; /* Couleur violette */
+    background-color: #4228FF; /* Couleur violette */
     position: fixed; /* Fixe la barre de navigation en haut */
     top: 0;
     left: 0;
@@ -40,7 +41,8 @@ nav a {
 }
 
 nav a:hover {
-    color: #FFF536; /* Changement de couleur au survol (jaune clair) */
+    background-color: white; /* Changement de couleur au survol (jaune clair) */
+    color:#4228ff;
 }
 
 nav a.active {
@@ -78,6 +80,7 @@ nav a.active {
     padding: 2vw;
     /*display: flex;*/
     justify-content: center; /* Centrer le contenu */
+    width:65vw;
 }
 
 /* Articles */
@@ -130,4 +133,9 @@ article.news h2 {
     #contact a {
         font-size: 2.5vw;
     }
+}
+
+.aside {
+    width:25vw;
+    color:black;
 }

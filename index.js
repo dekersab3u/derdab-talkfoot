@@ -1,3 +1,5 @@
+const apiKey = '9459393a7fc1497aac071315197d6786';
+const url = 'https://api.football-data.org/v2/matches';
 // Attendre que le DOM soit chargé
 document.addEventListener("DOMContentLoaded", function () {
     // Fonction pour charger le contenu dynamique
@@ -10,25 +12,28 @@ document.addEventListener("DOMContentLoaded", function () {
         switch (contentId) {
             case "home-link":
                 content = `
-                    <p>Bienvenue sur TalkFoot</p>
+                    <h2>Bienvenue sur TalkFoot</h2>
+                    <p>Ce site vous présentera différentes actualités et analyses liées 5 grands championnats européens. 
+                        Retrouvez les dernières actualités du monde du football dans l'onglet "Actualité".</p>
+                    
                 `;
                 break;
             case "news-link":
                 content = `
                     <article class="news">
-                        <h2>Paris recrute Neves</h2>
+                        <h2 id="psg-article">Paris recrute Neves</h2>
                         <div class="newsimg">
                             <img src="img/psg_joao_neves.jpg">
                         </div>
                     </article>
                     
                     <article class="news">
-                        <h2>Milan recrute Abraham</h2>
+                        <h2 id="milan-article">Milan recrute Abraham</h2>
                         <div class="newsimg">
                             <img src="img/acmilan_tammy_abraham.jpg">
                         </div>
                     </article> 
-                        `;
+                `;
                 break;
 
             case "analyses-link":
@@ -63,6 +68,56 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Met à jour la div "content" avec le nouveau contenu
         contentDiv.innerHTML = content;
+
+        // Ajouter des événements de clic aux articles pour charger les articles complets
+        addArticleClickEvents();
+    }
+
+    // Fonction pour gérer les événements de clic sur les articles
+    function addArticleClickEvents() {
+        const psgArticle = document.getElementById("psg-article");
+        const milanArticle = document.getElementById("milan-article");
+
+        if (psgArticle) {
+            psgArticle.addEventListener("click", function () {
+                loadArticle('psg');
+            });
+        }
+
+        if (milanArticle) {
+            milanArticle.addEventListener("click", function () {
+                loadArticle('milan');
+            });
+        }
+    }
+
+    // Fonction pour charger le contenu complet d'un article
+    function loadArticle(articleId) {
+        const contentDiv = document.getElementById("content");
+
+        let articleContent = "";
+
+        switch (articleId) {
+            case 'psg':
+                articleContent = `
+                    <h2>Le PSG signe Joao Neves</h2>
+                    <p>Après avoir commencé le football dans sa ville natale de Tavira en 2012, João Neves intègre la formation du SL Benfica en 2016...</p>
+                    <p>En 2022, il participe à la victoire de Benfica en Youth League. Quelques mois plus tard, le 30 décembre 2022, Neves fait ses débuts en équipe première...</p>
+                    <p>Ce milieu de terrain droitier, reconnu pour son aisance technique et son intelligence de jeu, termine la saison 2022-2023 en tant que titulaire...</p>
+                    <p>« C’est un immense honneur pour moi de rejoindre le Paris Saint-Germain », a affirmé João Neves.</p>
+                `;
+                break;
+
+            case 'milan':
+                articleContent = `
+                    <h2>Milan recrute Tammy Abraham</h2>
+                    <p>Détails sur le transfert et carrière de Tammy Abraham...</p>
+                `;
+                break;
+        }
+
+        // Remplace le contenu par l'article complet
+        contentDiv.innerHTML = articleContent;
     }
 
     // Sélection de tous les liens dans la navigation
@@ -77,6 +132,31 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Charger le contenu par défaut (par exemple, la page d'accueil)
+    function asideResults() {
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'X-Auth-Token': apiKey
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // Affiche les données récupérées dans la console
+                // Afficher les résultats dans ton HTML en parcourant les données obtenues
+                // Par exemple :
+                const matches = data.matches;
+                const resultsDiv = document.getElementById('aside');
+
+                matches.forEach(match => {
+                    const result = document.createElement('div');
+                    result.textContent = `${match.homeTeam.name} ${match.score.fullTime.homeTeam} - ${match.score.fullTime.awayTeam} ${match.awayTeam.name}`;
+                    resultsDiv.appendChild(result);
+                });
+            })
+            .catch(err => console.log(err));
+    }
+
+
     loadContent("home-link");
+    asideResults();
 });
