@@ -1,5 +1,5 @@
 const apiKey = '9459393a7fc1497aac071315197d6786';
-const url = 'https://api.football-data.org/v2/matches';
+const url = 'https://api.football-data.org/v4/matches';
 // Attendre que le DOM soit chargé
 document.addEventListener("DOMContentLoaded", function () {
     // Fonction pour charger le contenu dynamique
