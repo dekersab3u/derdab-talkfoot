@@ -6,20 +6,21 @@
 }
 
 @font-face {
-    font-family: "Upbolter" ;
+    font-family: "Upbolter";
     src: url('../fonts/UPBOLTERSNew-Regular.otf');
 }
 
 body {
     font-family: Upbolter;
     line-height: 1.8;
-    display:flex;
+    display: flex;
+    justify-content: center; /* Centrer le contenu horizontalement */
 }
 
 /* Style de la barre de navigation */
 header {
-    background-color: #4228FF; /* Couleur violette */
-    position: fixed; /* Fixe la barre de navigation en haut */
+    background-color: #4A3AFF; /* Couleur violette */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -28,21 +29,20 @@ header {
 
 nav {
     display: inline;
-    justify-content: left; /* Espace réduit entre les liens */
+    justify-content: left; /* Espacement réduit entre les liens */
     padding: 1vh 0;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    font-size: 2vw; /* Taille réduite des liens */
+    font-size: 2vw; /* Taille des liens */
     font-weight: normal;
     padding: 0 1.5vw; /* Espacement réduit entre les liens */
 }
 
 nav a:hover {
-    background-color: white; /* Changement de couleur au survol (jaune clair) */
-    color:#4228ff;
+    color: #FFF536; /* Changement de couleur au survol (jaune clair) */
 }
 
 nav a.active {
@@ -58,7 +58,7 @@ nav a.active {
     position: absolute;
     top: 0.3vh;
     right: 2vw;
-    margin-bottom:1vh;
+    margin-bottom: 1vh;
 }
 
 #contact a {
@@ -66,7 +66,7 @@ nav a.active {
     text-decoration: none;
     font-size: 1.8vw;
     padding: 0.5vh 1vw;
-    background-color: white; /* Jaune */
+    background-color: white;
     border-radius: 5px;
 }
 
@@ -74,23 +74,33 @@ nav a.active {
     background-color: #FFC400;
 }
 
-/* Contenu principal */
-#content {
+/* Conteneur principal pour le layout à deux colonnes */
+main {
+    display: flex;
+    width: 90vw; /* Largeur totale du conteneur principal */
+    justify-content: space-between;
     margin-top: 12vh; /* Laisser un espace en haut pour la barre de navigation */
+}
+
+/* Contenu principal à gauche */
+#content {
+    width: 60vw; /* Le contenu occupe environ 60% de l'écran */
     padding: 2vw;
-    /*display: flex;*/
-    justify-content: center; /* Centrer le contenu */
-    width:65vw;
+}
+
+/* Aside (contenu secondaire à droite) */
+#aside {
+    width: 25vw; /* Aside occupe environ 25% de la largeur de l'écran */
+    margin-left: 2vw;
+    margin-top:5vh;
+    padding: 2vw;
+    background-color: #F1F1F1; /* Couleur de fond pour aside */
+    border: 1px solid #ccc;
 }
 
 /* Articles */
-
-article {
-}
-
 article.news {
-    width: 60vw; /* Les articles occupent environ 60% de la largeur de l'écran */
-    margin-left:10vw;
+    width: 100%; /* Les articles occupent 100% de la largeur disponible dans le conteneur #content */
     margin-bottom: 5vh;
     border: 0.5vw solid black;
     padding: 2vw;
@@ -101,19 +111,25 @@ article.news h2 {
     font-size: 3vw;
     margin-bottom: 2vh;
     text-decoration: none;
+    width:32vw;
+}
+
+article.news h2:hover {
+    cursor: pointer;
+    color:blue;
+    text-decoration:underline;
 }
 
 .newsimg {
-    width:50vw;
-    margin:auto;
-    overflow:hidden;
+    width: 100%; /* L'image occupe la largeur complète */
+    margin: auto;
+    overflow: hidden;
 }
 
-/* Image des articles */
 .newsimg img {
     width: 100%;
     height: auto;
-    transition: transform .1s ; /* Pour l'effet de zoom */
+    transition: transform 0.1s; /* Pour l'effet de zoom */
 }
 
 .newsimg img:hover {
@@ -123,7 +139,7 @@ article.news h2 {
 /* Responsive design */
 @media screen and (max-width: 768px) {
     nav a {
-        font-size: 2.5vw; /* Taille réduite sur les petits écrans */
+        font-size: 2.5vw; /* Taille des liens sur petits écrans */
     }
 
     article.news h2 {
@@ -133,9 +149,14 @@ article.news h2 {
     #contact a {
         font-size: 2.5vw;
     }
-}
 
-.aside {
-    width:25vw;
-    color:black;
+    /* Stack aside below content on small screens */
+    main {
+        flex-direction: column;
+    }
+
+    #content, #aside {
+        width: 100%; /* Les deux colonnes prennent 100% de largeur sur petits écrans */
+        margin: 0;
+    }
 }
