@@ -111,7 +111,7 @@ article.news h2 {
     font-size: 3vw;
     margin-bottom: 2vh;
     text-decoration: none;
-    width:32vw;
+    max-width:fit-content;
 }
 
 article.news h2:hover {
@@ -134,6 +134,34 @@ article.news h2:hover {
 
 .newsimg img:hover {
     transform: scale(1.25) translate(10px);
+}
+
+#reseaux {
+    display:flex;
+}
+
+.reseau{
+    width:29vw;
+    box-sizing: border-box;
+    border:0.3vw solid black;
+    max-height:70vh;
+    overflow: scroll;
+
+}
+
+.reseau h3{
+    text-align:center;
+    font-size:2vw;
+}
+
+.reseau .logo {
+    max-width:12vw;
+    margin:auto;
+}
+
+.reseau .logo img {
+    box-sizing: border-box;
+    width:99%;
 }
 
 /* Responsive design */
