@@ -74,6 +74,16 @@ nav a.active {
     background-color: #FFC400;
 }
 
+#mainimg
+{
+    max-width:55vw;
+    margin-top: 6vh;
+}
+
+#mainimg img {
+    font-size:0;
+    max-width:100%;
+}
 /* Conteneur principal pour le layout à deux colonnes */
 main {
     display: flex;
@@ -162,6 +172,10 @@ article.news h2:hover {
 .reseau .logo img {
     box-sizing: border-box;
     width:99%;
+}
+
+.reseau blockquote, .reseau object{
+    max-width:100%;
 }
 
 /* Responsive design */

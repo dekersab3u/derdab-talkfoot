@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p>suivez les compétitions d’un autre oeil.</p>
                     <p>Ce site vous présentera différentes actualités et analyses liées 5 grands championnats européens. 
                         Retrouvez les dernières actualités du monde du football dans l'onglet "Actualité".</p>
-                    
+                    <div id="mainimg">
+                        <img src="img/acmilan_scudetto.jpg">
+                    </div>    
                 `;
                 break;
             case "news-link":
@@ -69,7 +71,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     "</div>" +
                     "<div class='reseau'><h3>Youtube</h3>" +
                     "<div class='logo'><img src='img/Youtube_logo.png'></div>" +
-                    "<object data='https://www.youtube.com/embed/xtbxv_KnGYA?si=DGTrTEcOxTMAef_4' type='text/html' width='640' height='360'> </object>" +
+                    "<object data='https://www.youtube.com/embed/xtbxv_KnGYA?si=DGTrTEcOxTMAef_4' type='text/html'" +
+                    " width='640' height='360' > </object>" +
                     "</div>" +
                     "</section>";
                 break;
